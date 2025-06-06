@@ -18,6 +18,7 @@ public enum ErrorCode {
     B409010("B409-010", "platform does not exist", 409),
     B409011("B409-011", "Video game does not exist", 409),
     B409012("B409-012", "There are no sending users", 409),
+    SP503("S0503", "Service not available", 503),
     ;
 
     private final String code;
