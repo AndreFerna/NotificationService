@@ -1,6 +1,7 @@
 package co.com.pragma.api.controller;
 
 import co.com.pragma.api.dto.NotificationDto;
+import co.com.pragma.api.dto.ResponseErrorDto;
 import co.com.pragma.api.mapper.NotificationMapper;
 import co.com.pragma.model.config.ErrorCode;
 import co.com.pragma.model.config.PragmaException;
@@ -48,9 +49,9 @@ public class NotificationController {
 
     @PostMapping
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Respuesta exitosa", content = {@Content(mediaType = "appliction/json", schema = @Schema(implementation = NotificationDto.class))}),
-            @ApiResponse(responseCode = "400", description = "Error en la solicitud", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = NotificationDto.class))}),
-            @ApiResponse(responseCode = "409", description = "Se presentan conflictos con los datos de la solicitud", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = NotificationDto.class))})
+            @ApiResponse(responseCode = "200", description = "Respuesta exitosa"),
+            @ApiResponse(responseCode = "400", description = "Error en la solicitud", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ResponseErrorDto.class))}),
+            @ApiResponse(responseCode = "409", description = "Se presentan conflictos con los datos de la solicitud", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ResponseErrorDto.class))})
     })
     public void sendNotification(@Valid @RequestBody NotificationDto notificationDto) {
         Notification notification = NotificationMapper.toDomain(notificationDto);
